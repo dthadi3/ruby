@@ -19,10 +19,6 @@
 
 language: c
 
-arch:
-- amd64
-- ppc64le
-
 os: linux
 
 dist: xenial
@@ -119,6 +115,11 @@ env:
     name: x86_64-linux
     <<: *gcc-8
 
+  - &ppc64le-linux
+    name: ppc64le-linux
+    arch: ppc64le
+    <<: *gcc-8
+    
   - &arm64-linux
     name: arm64-linux
     arch: arm64
@@ -202,6 +203,7 @@ matrix:
   include:
     # Build every commit:
     - <<: *i686-linux
+    - <<: *ppc64le-linux
     # Build every commit (Allowed Failures):
     - <<: *arm32-linux
     - <<: *arm64-linux
